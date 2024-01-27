@@ -40,8 +40,8 @@
             <?php if (isset($errors['email'])) : ?>
                 <p class="required_errors"><?= $errors['email'] ?></p>
             <?php endif; ?>
-            <label for="">Số điện thoại <sup class="required_errors">*</sup></label>
-            <input type="text" id="user-phone" name="phone" class="form-control" placeholder="Số điện thoại" required autofocus="">
+            <label for="">Sĩ số <sup class="required_errors">*</sup></label>
+            <input type="text" id="user-phone" name="phone" class="form-control" placeholder="Sĩ số" required autofocus="">
             <?php if (isset($errors['phone'])) : ?>
                 <p class="required_errors"><?= $errors['phone'] ?></p>
             <?php endif; ?>

@@ -102,7 +102,7 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
-                                <td style="vertical-align: middle; text-align: center;" colspan="4"><b>Tổng doanh thu :</b></td>
+                                <td style="vertical-align: middle; text-align: center;" colspan="4"><b>Tổng :</b></td>
                                 <td style="vertical-align: middle; text-align: center;" colspan="2"><b><?= number_format($total) ?> đ</b></td>
                             </tr>
                         </tbody>
