@@ -95,7 +95,7 @@
                                         <?php if (isset($_GET['type']) && $_GET['type'] == 'import') : ?>
                                         <a href="index.php?action=import&controller=product&type=<?= isset($_GET['type']) ? $_GET['type'] : 'import'?>&id=<?php echo $item['id'] ?>"><i class="fa fa-fw fa-plus"></i></a>
                                         <?php else: ?>
-                                            <a href="index.php?action=export&controller=product&type=<?= isset($_GET['type']) ? $_GET['type'] : 'export'?>&id=<?php echo $item['id'] ?>"><i class="fa fa-fw fa-minus"></i></a>
+                                            <a href="index.php?action=export&controller=product&type=<?= isset($_GET['type']) ? $_GET['type'] : 'export'?>&id=<?php echo $item['id'] ?>"><i class="fa fa-fw fa-plus"></i></a>
                                         <?php endif; ?>
                                     </td>
                                     <?php $total = $total + ($number * $price); ?>
