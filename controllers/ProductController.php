@@ -46,7 +46,7 @@ class ProductController
 
             $data['type'] = 1;
         }
-            
+
         if (isset($_POST['type']) && $_POST['type'] == 'export') {
             if (!empty($_POST['price_export'])) {
                 $data['price_export'] = $_POST['price_export'];
@@ -58,17 +58,17 @@ class ProductController
         $type = isset($_POST['type']) ? $_POST['type'] : 'import';
         if (!empty($errors)) {
             $_SESSION['product_errors'] = $errors;
-            header("Location: index.php?action=create&controller=product&type=".$type);
+            header("Location: index.php?action=create&controller=product&type=" . $type);
             return false;
         }
 
         // Goi model
         if (Product::store($data)) {
             $_SESSION['success'] = 'Thêm mới thành công';
-            header("Location: index.php?controller=product&action=index&type=".$type);
+            header("Location: index.php?controller=product&action=index&type=" . $type);
         } else {
             $_SESSION['errors'] = 'Đã xảy ra lỗi không thể thêm mặt hàng';
-            header("Location: index.php?action=create&controller=product&type=".$type);
+            header("Location: index.php?action=create&controller=product&type=" . $type);
             return false;
         }
     }
@@ -106,7 +106,7 @@ class ProductController
 
             $data['type'] = 1;
         }
-            
+
         if (isset($_POST['type']) && $_POST['type'] == 'export') {
             if (!empty($_POST['price_export'])) {
                 $data['price_export'] = $_POST['price_export'];
@@ -120,13 +120,13 @@ class ProductController
 
         if (!empty($errors)) {
             $_SESSION['product_errors'] = $errors;
-            header("Location: index.php?action=create&controller=product&type".$type);
+            header("Location: index.php?action=create&controller=product&type=" . $type);
             return false;
         }
 
         Product::update($id, $data);
         // Chuyen huong ve trang danh sach
-        header("Location: index.php?controller=product&action=index&type".$type);
+        header("Location: index.php?controller=product&action=index&type=" . $type);
     }
 
     // Xoa
@@ -162,7 +162,7 @@ class ProductController
 
         if (!empty($errors)) {
             $_SESSION['product_errors'] = $errors;
-            header("Location: index.php?action=import&controller=product&type=import&id=".$data['product_id']);
+            header("Location: index.php?action=import&controller=product&type=import&id=" . $data['product_id']);
             return false;
         }
 
@@ -172,7 +172,7 @@ class ProductController
             header("Location: index.php?controller=product&action=index&type=import");
         } else {
             $_SESSION['errors'] = 'Đã xảy ra lỗi không thể thêm mặt hàng';
-            header("Location: index.php?action=import&controller=product&type=import&id=".$data['product_id']);
+            header("Location: index.php?action=import&controller=product&type=import&id=" . $data['product_id']);
             return false;
         }
     }
@@ -201,7 +201,7 @@ class ProductController
 
         if (!empty($errors)) {
             $_SESSION['product_errors'] = $errors;
-            header("Location: index.php?action=export&controller=product&type=export&id=".$data['product_id']);
+            header("Location: index.php?action=export&controller=product&type=export&id=" . $data['product_id']);
             return false;
         }
 
@@ -211,7 +211,7 @@ class ProductController
             header("Location: index.php?controller=product&action=index&type=export");
         } else {
             $_SESSION['errors'] = 'Đã xảy ra lỗi không thể thêm mặt hàng';
-            header("Location: index.php?action=export&controller=product&type=export&id=".$data['product_id']);
+            header("Location: index.php?action=export&controller=product&type=export&id=" . $data['product_id']);
             return false;
         }
     }
@@ -235,13 +235,13 @@ class ProductController
 
         foreach ($products as $key => $product) {
 
-            $sql = "SELECT SUM(`number`) as number_import FROM `warehouse` WHERE `type` = 1 AND `product_id` =".$product['id'];
+            $sql = "SELECT SUM(`number`) as number_import FROM `warehouse` WHERE `type` = 1 AND `product_id` =" . $product['id'];
             $stmt = $conn->query($sql);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $row = $stmt->fetch();
             $number_import =  $row['number_import'];
 
-            $sql = "SELECT SUM(`number`) as number_export FROM `warehouse` WHERE `type` = 2 AND `product_id` =".$product['id'];
+            $sql = "SELECT SUM(`number`) as number_export FROM `warehouse` WHERE `type` = 2 AND `product_id` =" . $product['id'];
             $stmt = $conn->query($sql);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $row = $stmt->fetch();
@@ -266,7 +266,6 @@ class ProductController
                     'revenue' => ($number_export * $product['price_export']) - ($number_import * $product['price']),
                 ];
             }
-
         }
 
 

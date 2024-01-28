@@ -43,20 +43,25 @@
                                     <p class="required_errors"><?= $errors['name'] ?></p>
                                 <?php endif; ?>
                             </div>
-                            <div class="form-group">
-                                <label for="price">Giá nhập <sup class="required_errors">*</sup></label>
-                                <input type="number" class="form-control" name="price" id="price" value="<?= isset($product['price']) ? $product['price'] : '' ?>" placeholder="Giá mặt hàng">
-                                <?php if (isset($errors['price'])) : ?>
-                                    <p class="required_errors"><?= $errors['price'] ?></p>
-                                <?php endif; ?>
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Giá bán <sup class="required_errors">*</sup></label>
-                                <input type="number" class="form-control" name="price_export" id="price_export" placeholder="Giá bán">
-                                <?php if (isset($errors['price_export'])) : ?>
-                                    <p class="required_errors"><?= $errors['price_export'] ?></p>
-                                <?php endif; ?>
-                            </div>
+                            <?php if (isset($_GET['type']) && $_GET['type'] == 'import') :  ?>
+                                <div class="form-group">
+                                    <label for="price">Giá nhập <sup class="required_errors">*</sup></label>
+                                    <input type="number" class="form-control" name="price" id="price" value="<?= isset($product['price']) ? $product['price'] : '' ?>" placeholder="Giá mặt hàng">
+                                    <?php if (isset($errors['price'])) : ?>
+                                        <p class="required_errors"><?= $errors['price'] ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (isset($_GET['type']) && $_GET['type'] == 'export') :  ?>
+                                <div class="form-group">
+                                    <label for="price">Giá bán <sup class="required_errors">*</sup></label>
+                                    <input type="number" class="form-control" name="price_export" id="price_export" value="<?= isset($product['price_export']) ? $product['price_export'] : '' ?>" placeholder="Giá bán">
+                                    <?php if (isset($errors['price_export'])) : ?>
+                                        <p class="required_errors"><?= $errors['price_export'] ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <input type="hidden" name="type" value="<?= isset($_GET['type']) ? $_GET['type'] : 'import' ?>">
                             <div class="form-group">
                                 <button class="btn btn-success btn-block" type="submit" style="width: 50%; margin: auto;"><i class="fas fa-sign-in-alt"></i>Cập nhật </button>
                             </div>
