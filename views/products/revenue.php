@@ -44,8 +44,8 @@
                             <tr>
                                 <th scope="col">STT</th>
                                 <?php if (isset($admin) & $admin['user_role'] == 1) : ?>
-                                    <th scope="col">Người dùng</th>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                <th scope="col">Người dùng</th>                             
                                 <th scope="col">Tổng doanh thu</th>
                                 <th scope="col">Tổng chi phí</th>
                                 <th scope="col" class="text-center">Lợi nhuận</th>
